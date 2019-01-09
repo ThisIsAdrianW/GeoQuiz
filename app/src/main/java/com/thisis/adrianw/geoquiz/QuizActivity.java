@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
+    private static final String TAG = "QuizActivity";
     private Button mTrueButton;
     private Button mFalseButton;
     private ImageButton mNextButton;
@@ -30,6 +31,7 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        Log.d(TAG, "Wywołanie metody: onCreate(Bundle)");
         mTrueButton = findViewById(R.id.true_button);
         mFalseButton = findViewById(R.id.false_button);
         mNextButton = findViewById(R.id.next_button);
