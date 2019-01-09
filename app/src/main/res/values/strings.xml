@@ -6,6 +6,7 @@
     <string name="correct_toast">Poprawna odpowiedź!</string>
     <string name="incorrect_toast">Niepoprawna odpowiedź!</string>
     <string name="next_button">Następne</string>
+    <string name="previous_button">Poprzednie</string>
     <string name="question_oceans">Ocean Spokojny jest większy niż Ocean Atlantycki.</string>
     <string name="question_mideast">Kanał Sueski łączy Morze Czerwone z Oceanem Indyjskim.</string>
     <string name="question_africa">Źródło rzeki Nil znajduje się w Egipcie.</string>
