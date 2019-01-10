@@ -92,4 +92,30 @@ public class QuizActivity extends AppCompatActivity {
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "Wywołanie metody: onStart()");
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "Wywołanie metody: onResume()");
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "Wywołanie metody: onPause()");
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "Wywołanie metody: onStop()");
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "Wywołanie metody: onDestroy()");
+    }
 }
