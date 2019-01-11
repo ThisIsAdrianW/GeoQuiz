@@ -1,7 +1,6 @@
 package com.thisis.adrianw.geoquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class CheatActivity extends AppCompatActivity {
@@ -11,4 +10,5 @@ public class CheatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheat);
     }
+
 }
