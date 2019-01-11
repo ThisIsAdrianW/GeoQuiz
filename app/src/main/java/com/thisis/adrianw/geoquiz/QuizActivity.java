@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-//Strona 103
+//Strona 134
 
 public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
