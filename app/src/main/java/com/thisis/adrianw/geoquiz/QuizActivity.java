@@ -13,10 +13,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 //Strona 134
+//Pozamykać luki cheaterom związane ze zmianą orientacji
 
 public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
+    private static final String KEY_CHEAT = "cheaterCode";
     private static final String EXTRA_ANSWER_IS_TRUE = "com.thisis.adrianw.geoquiz.answer_is_true";
     private static final int REQUEST_CODE_CHEAT = 0;
     private boolean mIsCheater;
@@ -51,6 +53,7 @@ public class QuizActivity extends AppCompatActivity {
         updateQuestion();
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            mIsCheater = savedInstanceState.getBoolean(KEY_CHEAT, false);
         }
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,6 +155,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+        savedInstanceState.putBoolean(KEY_CHEAT, mIsCheater);
     }
     public static Intent newIntent(Context packageContext, boolean answerIsTrue) {
         Intent intent = new Intent(packageContext, CheatActivity.class);
