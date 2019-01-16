@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 //Strona 134
 //Pozamykać luki cheaterom związane ze zmianą orientacji
 
@@ -19,9 +21,11 @@ public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
     private static final String KEY_CHEAT = "cheaterCode";
+    private  static final String KEY_CHEAT_LIST = "listOfCheatedQuestions";
     private static final String EXTRA_ANSWER_IS_TRUE = "com.thisis.adrianw.geoquiz.answer_is_true";
     private static final int REQUEST_CODE_CHEAT = 0;
     private boolean mIsCheater;
+    ArrayList<Integer> valuesOfCheats = new ArrayList<>();
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mCheatButton;
@@ -54,6 +58,7 @@ public class QuizActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
             mIsCheater = savedInstanceState.getBoolean(KEY_CHEAT, false);
+            valuesOfCheats = savedInstanceState.getIntegerArrayList(KEY_CHEAT_LIST);
         }
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,8 +117,11 @@ public class QuizActivity extends AppCompatActivity {
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
         int messageResId = 0;
-        if (mIsCheater) {
+        if (mIsCheater || valuesOfCheats.contains(mQuestionBank[mCurrentIndex].getTextResId())) {
             messageResId = R.string.judgment_toast;
+            if (!valuesOfCheats.contains(mQuestionBank[mCurrentIndex].getTextResId())) {
+                valuesOfCheats.add(mQuestionBank[mCurrentIndex].getTextResId());
+            }
         } else {
             if (userPressedTrue == answerIsTrue) {
                 messageResId = R.string.correct_toast;
@@ -156,6 +164,7 @@ public class QuizActivity extends AppCompatActivity {
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
         savedInstanceState.putBoolean(KEY_CHEAT, mIsCheater);
+        savedInstanceState.putIntegerArrayList(KEY_CHEAT_LIST, valuesOfCheats);
     }
     public static Intent newIntent(Context packageContext, boolean answerIsTrue) {
         Intent intent = new Intent(packageContext, CheatActivity.class);
