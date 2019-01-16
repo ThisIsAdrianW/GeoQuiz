@@ -14,13 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-//Strona 134
 
 public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
     private static final String KEY_CHEAT = "cheaterCode";
-    private  static final String KEY_CHEAT_LIST = "listOfCheatedQuestions";
+    private static final String KEY_CHEAT_LIST = "listOfCheatedQuestions";
     private static final String EXTRA_ANSWER_IS_TRUE = "com.thisis.adrianw.geoquiz.answer_is_true";
     private static final int REQUEST_CODE_CHEAT = 0;
     private boolean mIsCheater;
@@ -31,7 +30,7 @@ public class QuizActivity extends AppCompatActivity {
     private ImageButton mNextButton;
     private ImageButton mPreviousButton;
     private TextView mQuestionTextView;
-    private Question[] mQuestionBank = new Question[] {
+    private Question[] mQuestionBank = new Question[]{
             new Question(R.string.question_australia, true),
             new Question(R.string.question_oceans, true),
             new Question(R.string.question_mideast, false),
@@ -83,8 +82,8 @@ public class QuizActivity extends AppCompatActivity {
         mPreviousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mCurrentIndex>0) {
-                    mCurrentIndex = (mCurrentIndex-1) % mQuestionBank.length;
+                if (mCurrentIndex > 0) {
+                    mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
                     updateQuestion();
                 }
 
@@ -93,7 +92,7 @@ public class QuizActivity extends AppCompatActivity {
         mQuestionTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCurrentIndex = (mCurrentIndex+1) % mQuestionBank.length;
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
             }
         });
@@ -107,6 +106,7 @@ public class QuizActivity extends AppCompatActivity {
         });
 
     }
+
     private void updateQuestion() {
         //Log.d(TAG, "Updating question text", new Exception());
         int question = mQuestionBank[mCurrentIndex].getTextResId();
@@ -136,21 +136,25 @@ public class QuizActivity extends AppCompatActivity {
         super.onStart();
         Log.d(TAG, "Wywołanie metody: onStart()");
     }
+
     @Override
     public void onResume() {
         super.onResume();
         Log.d(TAG, "Wywołanie metody: onResume()");
     }
+
     @Override
     public void onPause() {
         super.onPause();
         Log.d(TAG, "Wywołanie metody: onPause()");
     }
+
     @Override
     public void onStop() {
         super.onStop();
         Log.d(TAG, "Wywołanie metody: onStop()");
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -165,11 +169,13 @@ public class QuizActivity extends AppCompatActivity {
         savedInstanceState.putBoolean(KEY_CHEAT, mIsCheater);
         savedInstanceState.putIntegerArrayList(KEY_CHEAT_LIST, valuesOfCheats);
     }
+
     public static Intent newIntent(Context packageContext, boolean answerIsTrue) {
         Intent intent = new Intent(packageContext, CheatActivity.class);
         intent.putExtra(EXTRA_ANSWER_IS_TRUE, answerIsTrue);
         return intent;
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != Activity.RESULT_OK) {
