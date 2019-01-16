@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 //Strona 134
-//Pozamykać luki cheaterom związane ze zmianą orientacji
 
 public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
